@@ -37,7 +37,6 @@ export const recommendProducts = async (occasion: string, preferences: string, p
   const ai = getAiClient();
   if (!ai) return [];
 
-  // Create a simplified catalog string to send to AI
   const catalogContext = products.map(p => 
     `ID: ${p.id}, Nombre: ${p.name}, Categoría: ${p.category}, Tags: ${p.tags.join(',')}, Descripción: ${p.description}`
   ).join('\n');
@@ -51,7 +50,7 @@ export const recommendProducts = async (occasion: string, preferences: string, p
   Ocasión: ${occasion}
   Gustos/Detalles: ${preferences}
 
-  Devuelve SOLO un array JSON válido (sin markdown, sin explicaciones extra) con el formato:
+  Devuelve SOLO un array JSON válido con el formato:
   [{"id": "id_del_producto", "reason": "breve explicación de por qué es buena opción"}]
   `;
 
@@ -62,7 +61,6 @@ export const recommendProducts = async (occasion: string, preferences: string, p
     });
     
     let text = response.text || "[]";
-    // Clean markdown code blocks if present
     text = text.replace(/```json/g, '').replace(/```/g, '').trim();
     
     return JSON.parse(text);
@@ -82,7 +80,7 @@ export const chatWithFlorist = async (message: string, history: {role: string, p
       config: {
         systemInstruction: "Eres 'Rosa', una asistente experta de la florería 'Lavanda & Rosas'. Tu objetivo es ayudar a los clientes a elegir el arreglo floral perfecto. Eres amable, conocedora de flores y estacionalidad. Recomienda productos basándote en emociones y ocasiones. Tus respuestas deben ser breves y útiles (máximo 60 palabras).",
       },
-      history: history as any, // Simple casting for this demo
+      history: history as any,
     });
 
     const response: GenerateContentResponse = await chat.sendMessage({ message });

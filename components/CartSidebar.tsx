@@ -16,12 +16,10 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cartItems, o
   return (
     <div className={`fixed inset-0 overflow-hidden z-[60] ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}>
       <div className={`absolute inset-0 overflow-hidden`}>
-        {/* Overlay */}
         <div 
           className={`absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity duration-500 ${isOpen ? 'opacity-100' : 'opacity-0'}`} 
           onClick={onClose}
         />
-
         <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
           <div className={`w-screen max-w-md transform transition ease-in-out duration-500 sm:duration-700 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
             <div className="h-full flex flex-col bg-white shadow-xl overflow-y-scroll">
@@ -56,7 +54,6 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cartItems, o
                                 className="w-full h-full object-center object-cover"
                               />
                             </div>
-
                             <div className="ml-4 flex-1 flex flex-col">
                               <div>
                                 <div className="flex justify-between text-base font-medium text-gray-900">
@@ -83,7 +80,6 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cartItems, o
                   )}
                 </div>
               </div>
-
               {cartItems.length > 0 && (
                 <div className="border-t border-gray-200 py-6 px-4 sm:px-6 bg-gray-50">
                   <div className="flex justify-between text-base font-medium text-gray-900">

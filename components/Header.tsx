@@ -35,7 +35,6 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart, currentView, onN
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-purple-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -45,7 +44,6 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart, currentView, onN
             </button>
           </div>
 
-          {/* Logo Section */}
           <div className="flex items-center gap-2">
             <button onClick={() => onNavigate('home')} className="flex items-center gap-2 group">
               <div className="bg-brand-primary/10 p-2 rounded-full group-hover:bg-brand-primary/20 transition-colors">
@@ -57,7 +55,6 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart, currentView, onN
             </button>
           </div>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex space-x-1">
             <NavButton view="home" label="Inicio" />
             <NavButton view="catalog" label="Catálogo" />
@@ -80,10 +77,7 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart, currentView, onN
             )}
           </nav>
 
-          {/* Actions */}
           <div className="flex items-center space-x-2 sm:space-x-4">
-            
-            {/* User Auth Section */}
             {user ? (
                <div className="flex items-center gap-2 border-r border-gray-200 pr-4">
                  <div className="text-right hidden sm:block">
@@ -123,7 +117,6 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart, currentView, onN
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">

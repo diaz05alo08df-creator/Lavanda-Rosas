@@ -17,8 +17,6 @@ const ProductList: React.FC<ProductListProps> = ({ products, onAddToCart, title,
   const handleAdd = (product: Product) => {
     onAddToCart(product);
     setAddedItems(prev => new Set(prev).add(product.id));
-    
-    // Reset icon after 2 seconds
     setTimeout(() => {
       setAddedItems(prev => {
         const next = new Set(prev);
@@ -36,26 +34,20 @@ const ProductList: React.FC<ProductListProps> = ({ products, onAddToCart, title,
             <h2 className="text-3xl font-serif font-bold text-brand-dark">{title}</h2>
             {subtitle && <p className="mt-2 text-gray-500">{subtitle}</p>}
           </div>
-          <div className="hidden sm:block">
-            <button className="text-brand-primary font-medium hover:text-brand-dark transition">
-              Ver todo &rarr;
-            </button>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
           {products.map((product) => (
             <div key={product.id} className="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden border border-gray-100">
-              <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 group-hover:opacity-95 transition-opacity lg:h-80">
+              <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 group-hover:opacity-95 transition-opacity lg:h-80 h-64">
                 <img
                   src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
                 />
-                {/* Badge for category if needed */}
                 <div className="absolute top-2 left-2">
-                   <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-white/90 text-brand-dark shadow-sm">
-                      {product.category === 'ramo' ? 'Ramo' : product.category === 'caja' ? 'Caja' : 'Decoración'}
+                   <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-white/90 text-brand-dark shadow-sm capitalize">
+                      {product.category}
                    </span>
                 </div>
               </div>
@@ -73,7 +65,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, onAddToCart, title,
                   <p className="text-xl font-medium text-brand-dark">${product.price.toLocaleString('es-MX')}</p>
                   <button
                     onClick={(e) => {
-                      e.stopPropagation(); // Prevent card click
+                      e.stopPropagation();
                       handleAdd(product);
                     }}
                     className={`z-20 p-2 rounded-full transition-all duration-300 ${
