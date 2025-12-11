@@ -1,4 +1,4 @@
-import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 import { MessageRequest, Product } from '../types';
 
 const getAiClient = () => {
@@ -22,7 +22,7 @@ export const generateDedication = async (req: MessageRequest): Promise<string> =
   Solo devuelve el texto del mensaje, nada más.`;
 
   try {
-    const response: GenerateContentResponse = await ai.models.generateContent({
+    const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: prompt,
     });
@@ -55,7 +55,7 @@ export const recommendProducts = async (occasion: string, preferences: string, p
   `;
 
   try {
-    const response: GenerateContentResponse = await ai.models.generateContent({
+    const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: prompt,
     });
@@ -83,7 +83,7 @@ export const chatWithFlorist = async (message: string, history: {role: string, p
       history: history as any,
     });
 
-    const response: GenerateContentResponse = await chat.sendMessage({ message });
+    const response = await chat.sendMessage({ message });
     return response.text || "No entendí tu pregunta.";
   } catch (error) {
     console.error("Chat error:", error);

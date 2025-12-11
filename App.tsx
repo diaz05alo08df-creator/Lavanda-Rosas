@@ -49,8 +49,12 @@ type ViewState = 'home' | 'catalog' | 'ramos' | 'flower-guide' | 'ai-helper' | '
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('home');
   const [products, setProducts] = useState<Product[]>(() => {
-    const saved = localStorage.getItem('lavanda_products');
-    return saved ? JSON.parse(saved) : INITIAL_PRODUCTS;
+    try {
+      const saved = localStorage.getItem('lavanda_products');
+      return saved ? JSON.parse(saved) : INITIAL_PRODUCTS;
+    } catch {
+      return INITIAL_PRODUCTS;
+    }
   });
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);

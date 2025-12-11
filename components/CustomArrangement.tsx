@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Product } from '../types';
-import { Palette, Check, ShoppingBag, Gift, MessageSquare, Scissors } from 'lucide-react';
+import { Palette, Check, ShoppingBag, Gift, MessageSquare, Scissors, Package } from 'lucide-react';
 
 interface CustomArrangementProps {
   onAddToCart: (product: Product) => void;
@@ -67,7 +67,7 @@ const CustomArrangement: React.FC<CustomArrangementProps> = ({ onAddToCart }) =>
                 <h3 className="text-lg font-bold text-brand-dark flex items-center gap-2 mb-4"><span className="bg-brand-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span> Elige la base</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <button type="button" onClick={() => setBaseType('ramo')} className={`p-4 rounded-xl border-2 flex flex-col items-center gap-2 transition-all ${baseType === 'ramo' ? 'border-brand-primary bg-purple-50 text-brand-dark' : 'border-gray-200 hover:border-brand-primary/50'}`}><Gift size={32} className={baseType === 'ramo' ? 'text-brand-primary' : 'text-gray-400'} /><span className="font-bold">Ramo</span></button>
-                  <button type="button" onClick={() => setBaseType('caja')} className={`p-4 rounded-xl border-2 flex flex-col items-center gap-2 transition-all ${baseType === 'caja' ? 'border-brand-primary bg-purple-50 text-brand-dark' : 'border-gray-200 hover:border-brand-primary/50'}`}><PackageIcon /><span className="font-bold">Caja / Box</span></button>
+                  <button type="button" onClick={() => setBaseType('caja')} className={`p-4 rounded-xl border-2 flex flex-col items-center gap-2 transition-all ${baseType === 'caja' ? 'border-brand-primary bg-purple-50 text-brand-dark' : 'border-gray-200 hover:border-brand-primary/50'}`}><Package size={32} className={baseType === 'caja' ? 'text-brand-primary' : 'text-gray-400'} /><span className="font-bold">Caja / Box</span></button>
                 </div>
               </div>
               <div>
@@ -106,13 +106,5 @@ const CustomArrangement: React.FC<CustomArrangementProps> = ({ onAddToCart }) =>
     </section>
   );
 };
-
-const PackageIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400">
-    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-    <line x1="12" y1="22.08" x2="12" y2="12"></line>
-  </svg>
-);
 
 export default CustomArrangement;
