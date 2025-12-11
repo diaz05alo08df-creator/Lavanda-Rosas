@@ -1,0 +1,5 @@
+{
+  "name": "Lavanda & Rosas",
+  "description": "Plataforma completa de e-commerce para florería. Incluye navegación por vistas, catálogo filtrado, integración de IA (Gemini) para dedicatorias y recomendaciones, flujo de checkout con autenticación y sección corporativa (Misión/Visión).",
+  "requestFramePermissions": []
+}
