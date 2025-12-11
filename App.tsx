@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import ProductList from './components/ProductList';
 import CartSidebar from './components/CartSidebar';
 import AICardGenerator from './components/AICardGenerator';
-import ChatAssistant from './components/ChatAssistant';
 import LoginModal from './components/LoginModal';
 import CheckoutModal from './components/CheckoutModal';
 import FlowerGuide from './components/FlowerGuide';
@@ -193,7 +192,6 @@ const App: React.FC = () => {
       <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} cartItems={cart} onRemoveItem={handleRemoveFromCart} onCheckout={handleCheckoutClick}/>
       <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} onLogin={handleLogin}/>
       <CheckoutModal isOpen={isCheckoutModalOpen} onClose={handleCloseCheckout} onSubmit={handlePlaceOrder} user={user} total={cartTotal} cart={cart}/>
-      <ChatAssistant />
     </div>
   );
 };
